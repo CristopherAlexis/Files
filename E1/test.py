@@ -15,7 +15,7 @@ class TestMain(unittest.TestCase):
         self.assertIsInstance(peso_promedio, float)
         self.assertEqual(peso_promedio, 37.5)
 
-    @unittest.skip("Función todavía no corregida")
+#    @unittest.skip("Función todavía no corregida")
     def test_buscar_extensiones_unicas(self):
         extensiones = buscar_extensiones_unicas(self.archivos)
         self.assertIsInstance(extensiones, set)
