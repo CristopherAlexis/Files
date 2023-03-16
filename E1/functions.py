@@ -21,9 +21,9 @@ def buscar_extensiones_unicas(archivos: list) -> set:
 
 def cargar_top_archivos() -> list:
     top_3 = []
-    with open(join("data", "top.txt"), encoding="utf-8") as archivo:
+    with open(join("data", "top.dcc"), encoding="utf-8") as archivo:
         for linea in archivo.readlines():
-            nombre, peso = linea.strip().separar(",")
+            nombre, peso = linea.strip().split(",")
             top_3.append([nombre, peso])
 
     return top_3
@@ -31,7 +31,19 @@ def cargar_top_archivos() -> list:
 
 def buscar_archivo(carpeta: dict, nombre_archivo: str) -> list:
     # Caso base
-    if carpeta["file"].nombre == nombre_archivo:
+    if carpeta["archivo"].nombre == nombre_archivo:
         return [carpeta["nombre_carpeta"], carpeta["archivo"].nombre]
 
     # Recursión (Completar)
+    if carpeta["subcarpeta_1"]:
+        intento_1 = buscar_archivo(carpeta["subcarpeta_1"], nombre_archivo)
+            #intento_1 = ["SEMESTRE_1", "apuntes.pdf"]
+        if intento_1 != []:
+            return [carpeta["nombre_carpeta"]] + intento_1 
+
+    if carpeta["subcarpeta_2"]:
+        intento_2 = buscar_archivo(carpeta["subcarpeta_2"], nombre_archivo)
+            #intento_1 = ["SEMESTRE_1", "apuntes.pdf"]
+        if intento_2 != []:
+            return [carpeta["nombre_carpeta"]] + intento_2
+    return []
