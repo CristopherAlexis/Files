@@ -43,7 +43,6 @@ def buscar_archivo(carpeta: dict, nombre_archivo: str) -> list:
 
     if carpeta["subcarpeta_2"]:
         intento_2 = buscar_archivo(carpeta["subcarpeta_2"], nombre_archivo)
-            #intento_1 = ["SEMESTRE_1", "apuntes.pdf"]
         if intento_2 != []:
             return [carpeta["nombre_carpeta"]] + intento_2
     return []
